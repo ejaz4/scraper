@@ -56,6 +56,12 @@ def parseHtml(html: str, itemToScrape: str):
             continue
 
         scriptUrl = tag["src"]
+        
+        if scriptUrl.startswith("data"):
+            continue
+        
+        if scriptUrl.startswith("mailto"):
+            continue
 
         parsedUrl = handleLink(scriptUrl, myPath, hostname, myPath)
 
@@ -74,6 +80,12 @@ def parseHtml(html: str, itemToScrape: str):
             continue
 
         hrefUrl = tag["href"]
+        
+        if hrefUrl.startswith("data"):
+            continue
+        
+        if hrefUrl.startswith("mailto"):
+            continue
 
         parsedUrl = handleLink(hrefUrl, myPath, hostname, myPath)
 

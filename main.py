@@ -4,10 +4,12 @@ import os
 
 
 def main():
-    url = "https://stella.hs.vc/en/index-d.html"
+    url = "https://intranet.ecs.westminster.ac.uk/modules/4COSC011W/examples"
     dir = os.path.join(os.getcwd(), "output")
     print(dir)
     scraper = Scraper(url, dir)
-    scraper.scrape()
+
+    while len(scraper.queue) > 0:
+        scraper.scrape()
 
 main()
